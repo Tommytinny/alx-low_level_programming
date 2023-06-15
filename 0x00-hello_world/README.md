@@ -32,4 +32,8 @@ You are not allowed to use the function puts
 Your program should return 0
 Your program should compile without warning when using the -Wall gcc option
 # File: 6-size.c
-This is a C program that prints the size of various types on the computer it is compiled and run on. 
+This is a C program that prints the size of various types on the computer it is compiled and run on.
+# File: 100-intel
+This script generates the assembly code (Intel syntax) of a C code and save it in an output file.
+
+The C file name will be saved in the variable $CFILE. 
