@@ -7,4 +7,6 @@ This C program prints the alphabet in lowercase, followed by a new line. using o
 # File: 3-print_alphabets.c
 This C program prints the alphabet in lowercase, and then in uppercase, followed by a new line.
 # File: 4-print_alphabt.c
-This C program prints the alphabet in lowercase except 'q' and 'e' are not printed
+This C program prints the alphabet in lowercase except 'q' and 'e' are not printed.
+# File: 5-print_numbers.c
+This C program prints all single digit numbers of base 10 starting from 0
