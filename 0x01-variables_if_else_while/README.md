@@ -6,3 +6,5 @@ This C program assign a random number to the variable n each time it is executed
 This C program prints the alphabet in lowercase, followed by a new line. using only the putchar function.
 # File: 3-print_alphabets.c
 This C program prints the alphabet in lowercase, and then in uppercase, followed by a new line.
+# File: 4-print_alphabt.c
+This C program prints the alphabet in lowercase except 'q' and 'e' are not printed
