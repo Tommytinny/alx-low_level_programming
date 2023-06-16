@@ -10,3 +10,5 @@ This C program prints the alphabet in lowercase, and then in uppercase, followed
 This C program prints the alphabet in lowercase except 'q' and 'e' are not printed.
 # File: 5-print_numbers.c
 This C program prints all single digit numbers of base 10 starting from 0
+# File: 6-print_numberz.c
+This C program prints all single digit numbers of base 10 starting from 0
