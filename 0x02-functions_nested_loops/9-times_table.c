@@ -21,8 +21,6 @@ void times_table(void)
 			}
 			if (multiple < 10)
 			{
-				_putchar(' ');
-				_putchar(' ');
 				_putchar((multiple % 10) + '0');
 			}
 			else
