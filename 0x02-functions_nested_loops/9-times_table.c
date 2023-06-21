@@ -8,7 +8,7 @@
 
 int _putchar(char c);
 
-void print_9_times_table(void)
+void times_table(void)
 {
 	int row, column;
 	int product;
