@@ -38,10 +38,6 @@ void times_table(void)
 			{
 				_putchar(',');
 				_putchar(' ');
-				if (c < 10)
-				{
-					_putchar(' ');
-				}
 			}
 			counter++;
 		}
