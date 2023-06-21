@@ -29,7 +29,6 @@ void times_table(void)
 			}
 			else if (product == 0)
 			{
-				_putchar('');
 			}
 			else
 			{
