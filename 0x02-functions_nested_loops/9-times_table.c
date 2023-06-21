@@ -4,43 +4,33 @@
  * times_table - prints the 9 times table from 0
  * Return: void
  */
-void times_table(void)
-{
-	int a, r, c, times, counter;
+#include "main.h"
 
-	for (a = 0; a <= 9; a++)
+int _putchar(char c);
+
+void print_9_times_table(void)
+{
+	int row, column;
+	int product;
+	
+	for (row = 0; row <= 9; row++)
 	{
-		_putchar('0');
-		if (a != 9)
+		for (column = 0; column <= 9; column++)
 		{
-			_putchar(',');
-			_putchar(' ');
-			_putchar(' ');
-		}
-	}
-	_putchar('\n');
-	for (r = 1; r <= 9; r++)
-	{
-		counter = 0;
-		for (c = 0; c <= 9; c++)
-		{
-			times = (r * counter);
-			if (times / 10 > 0)
-			{
-				_putchar((times / 10) + '0');
-				_putchar((times % 10) + '0');
-			}
-			else
-			{
-				_putchar((times % 10) + '0');
-			}
-			if (c != 9)
+			product = row * column;
+			if (column != 0)
 			{
 				_putchar(',');
 				_putchar(' ');
+				if (product < 10)
+				{
+					_putchar(' ');
+				}
 			}
-			counter++;
+			_putchar((product / 10) + '0');
+			_putchar((product % 10) + '0');
 		}
 		_putchar('\n');
 	}
 }
+
