@@ -4,10 +4,6 @@
  * times_table - prints the 9 times table from 0
  * Return: void
  */
-#include "main.h"
-
-int _putchar(char c);
-
 void times_table(void)
 {
 	int row, column;
@@ -26,7 +22,6 @@ void times_table(void)
 			if (product < 10)
 			{
 				_putchar(' ');
-				_putchar('.');
 			}
 			else
 			{
