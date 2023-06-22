@@ -5,7 +5,7 @@
  * @c: character to check
  * Return: 1 if is digit 0 if not
  */
-int _isdigit(int c)
+int _isdigit(int n)
 {
 	if ((n >= 48) && (n <= 57))
 	{
