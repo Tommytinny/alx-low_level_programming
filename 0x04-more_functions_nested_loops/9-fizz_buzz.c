@@ -2,12 +2,14 @@
 
 /**
  * main - entry point
- * Return: void
+ * Return: 0 if success
  */
 
-int main(void)
+int main()
 {
-	for (i = 0; i <= 100; i++)
+	int i;
+
+	for (i = 1; i <= 100; i++)
 	{
 		if (i % 3 == 0 && i % 5 == 0)
 		{
@@ -23,7 +25,9 @@ int main(void)
 		}
 		else
 		{
-			printf("%d", i);
+			printf("%d ", i);
 		}
 	}
+	printf("\n");
+	return (0);
 }
