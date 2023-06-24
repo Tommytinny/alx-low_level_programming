@@ -1,12 +1,11 @@
-#include "main.h"
-
+#include <stdio.h>
 /**
- * printFizzBuzz - function
+ * main - entry point
  *
  * Return: void
  */
 
-int printFizzBuzz(void)
+int main(void)
 {
 	int i;
 
@@ -14,21 +13,21 @@ int printFizzBuzz(void)
 	{
 		if (i % 3 == 0 && i % 5 == 0)
 		{
-			_putchar("FizzBuzz ");
+			printf("FizzBuzz ");
 		}
 		else if (i % 3 == 0)
 		{
-			_putchar("Buzz ");
+			printf("Buzz ");
 		}
 		else if (i % 5 == 0)
 		{
-			_putchar("Buzz ");
+			printf("Buzz ");
 		}
 		else
 		{
-			_putchar("%d ", i);
+			printf("%d ", i);
 		}
 	}
-	_putchar("\n");
+	printf("\n");
 	return (0);
 }
