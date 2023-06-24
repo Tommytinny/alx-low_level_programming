@@ -23,4 +23,6 @@ void print_square(int size);
 
 void printFizzBuzz(void);
 
+void print_triangle(int size);
+
 #endif
