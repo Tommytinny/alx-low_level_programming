@@ -1,11 +1,12 @@
 #include <stdio.h>
 
 /**
- * main - entry point
- * Return: 0 if success
+ * printFizzBizz - function
+ *
+ * Return: void
  */
 
-int main(void)
+int printFizzBuzz(void)
 {
 	int i;
 
