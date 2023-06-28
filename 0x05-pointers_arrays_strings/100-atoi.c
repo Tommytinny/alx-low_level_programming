@@ -18,6 +18,9 @@ int _atoi(char *s)
 	digit = 0;
 
 	while (s[len] != '\0')
+		len++;
+
+	while (s[len] != '\0')
 	{
 		if (s[i] == '-')
 			++d;
