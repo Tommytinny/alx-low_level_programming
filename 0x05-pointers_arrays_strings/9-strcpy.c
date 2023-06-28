@@ -4,7 +4,7 @@
 /**
  * *_strcpy - function
  * @dest: copy to
- * #src: copy from
+ * @src: copy from
  * Return: string
  */
 char *_strcpy(char *dest, char *src)
@@ -12,7 +12,7 @@ char *_strcpy(char *dest, char *src)
 	int i = 0;
 	int x = 0;
 
-	while (*(src + 1) != '\0')
+	while (*(src + i) != '\0')
 	{
 		i++;
 	}
@@ -20,6 +20,6 @@ char *_strcpy(char *dest, char *src)
 	{
 		dest[x] = src[x];
 	}
-	dest[1] = '\0';
+	dest[i] = '\0';
 	return (dest);
 }
