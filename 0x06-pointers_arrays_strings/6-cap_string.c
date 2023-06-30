@@ -1,6 +1,5 @@
 #include "main.h"
 #include <stdio.h>
-#include <ctype.h>
 
 /**
  * *cap_string - capitalizes all words of a string
@@ -9,29 +8,32 @@
  */
 char *cap_string(char *str)
 {
-	int capitalize_next = 1;
-	char *ptr = str;
+	int index = 0;
 
-	while (*ptr != '\0')
+	while (str[index])
 	{
-		if (capitalize_next && islower(*ptr))
+		while (!(str[index] >= 'a' && str[index] <= 'z'))
 		{
-			*ptr = toupper(*ptr);
-			capitalize_next = 0;
+			index++;
 		}
-		else if (*ptr == ' ' || *ptr == '\t' || *ptr == '\n' || *ptr == ',' ||
-				*ptr == ';' || *ptr == '.' || *ptr == '!' || *ptr == '?' ||
-				*ptr == '"' || *ptr == '(' || *ptr == ')' || *ptr == '{' ||
-				*ptr == '}')
+		if (str[index -1] == ' ' ||
+				str[index - 1] == '\t' ||
+				str[index - 1] == '\n' ||
+				str[index - 1] == ',' ||
+				str[index - 1] == ';' ||
+				str[index - 1] == '.' ||
+				str[index - 1] == '!' ||
+				str[index - 1] == '?' ||
+				str[index - 1] == '"' ||
+				str[index - 1] == '(' ||
+				str[index - 1] == ')' ||
+				str[index - 1] == '{' ||
+				str[index - 1] == '}' ||
+				index == 0)
 		{
-			capitalize_next = 1;
+			str[index] -= 32;
 		}
-		else if (isupper(*ptr))
-		{
-			capitalize_next = 0;
-		}
-
-		ptr++;
+		index++;
 	}
 	return (str);
 }
