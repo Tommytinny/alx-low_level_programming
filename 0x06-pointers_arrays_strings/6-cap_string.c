@@ -14,9 +14,9 @@ char *cap_string(char *str)
 	while (*ptr != '\0')
 	{
 		if (*ptr == ' ' || *ptr == '\t' || *ptr == '\n' || *ptr == ',' ||
-            *ptr == ';' || *ptr == '.' || *ptr == '!' || *ptr == '?' ||
-            *ptr == '"' || *ptr == '(' || *ptr == ')' || *ptr == '{' ||
-            *ptr == '}')
+				*ptr == ';' || *ptr == '.' || *ptr == '!' || *ptr == '?' ||
+				*ptr == '"' || *ptr == '(' || *ptr == ')' || *ptr == '{' ||
+				*ptr == '}')
 		{
 			capitalize_next = 1;
 		}
@@ -28,7 +28,5 @@ char *cap_string(char *str)
 
 		ptr++;
 	}
-
 	return (str);
 }
-				
