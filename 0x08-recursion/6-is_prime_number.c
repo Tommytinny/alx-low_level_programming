@@ -2,18 +2,22 @@
 #include <stdio.h>
 
 /**
- * is_prime_number - prime number
- * @n: input value
- *
- * Return: 1 if n is prime number else 0
+ * primenum - Checks from 1  to n
+ * @a: place holder for n
+ * @b: number that iterates from 1 to n
+ * Return: On success 1
  */
-int is_prime_number(int n)
+int primenum(int a, int b)
 {
-	if (n <= 1)
+	if (a == b)
+	{
+		return (1);
+	}
+	else if (a % b == 0)
 	{
 		return (0);
 	}
-	return (primenum(n, 2));
+	return (primenum(a, b + 1));
 }
 
 /**
