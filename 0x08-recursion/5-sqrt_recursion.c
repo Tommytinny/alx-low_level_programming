@@ -31,12 +31,14 @@ int _sqrt_recursion(int n)
  */
 int cal_sqrt(int n,int s, int e)
 {
+	int mid;
+
 	if (s > e)
 	{
 		return (-1);
 	}
 
-	int mid = (s + e) / 2;
+	mid = (s + e) / 2;
 
 	if (mid * mid == n)
 	{
