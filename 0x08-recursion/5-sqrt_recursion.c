@@ -8,18 +8,17 @@
  */
 int _sqrt_recursion(int n)
 {
+	int root = 0;
+
 	if (n < 0)
 	{
 		return (-1);
 	}
-	else if (n == 1)
+	if (n == 1)
 	{
 		return (1);
 	}
-	else
-	{
-		return (cal_sqrt(n, root + 1));
-	}
+	return (cal_sqrt(n, root);
 }
 
 /**
