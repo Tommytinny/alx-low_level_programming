@@ -12,44 +12,31 @@ int _sqrt_recursion(int n)
 	{
 		return (-1);
 	}
-	else if (n == 0 || n == 1)
+	else if (n == 1)
 	{
-		return (n);
+		return (1);
 	}
 	else
 	{
-		return (cal_sqrt(n, 1, n));
+		return (cal_sqrt(n, root + 1));
 	}
 }
 
 /**
  * cal_sqrt - calculate the square root
  * @n: given value
- * @s: start value
- * @e: end value
+ * @root: root value
  * Return: the square root
  */
-int cal_sqrt(int n,int s, int e)
+int cal_sqrt(int n, int root)
 {
-	int mid;
-
-	if (s > e)
+	if ((root * root) == n)
+	{
+		return (root);
+	}
+	if (root == n / 2)
 	{
 		return (-1);
 	}
-
-	mid = (s + e) / 2;
-
-	if (mid * mid == n)
-	{
-		return (mid);
-	}
-	else if (mid * mid > n)
-	{
-		return (cal_sqrt(n, s, mid - 1));
-	}
-	else
-	{
-		return (cal_sqrt(n, mid + 1, e));
-	}
+	return (cal_sqrt(n, root + 1));
 }
