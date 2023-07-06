@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdioh>
 
 /**
  * _sqrt_recursion - returns the natural square root of a number.
@@ -28,7 +29,7 @@ int _sqrt_recursion(int n)
  * @e: end value
  * Return: the square root
  */
-int cal_sqrt(int n, s, e)
+int cal_sqrt(int n,int s, int e)
 {
 	if (s > e)
 	{
