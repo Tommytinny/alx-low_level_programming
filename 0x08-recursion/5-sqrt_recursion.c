@@ -36,7 +36,7 @@ int cal_sqrt(int n,int s, int e)
 		return (-1);
 	}
 
-	int mid = (s + e);
+	int mid = (s + e) / 2;
 
 	if (mid * mid == n)
 	{
