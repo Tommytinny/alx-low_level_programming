@@ -1,33 +1,5 @@
 #include "main.h"
-#include <stdio.h>
 #include <stdlib.h>
-/**
- * get_total_length - calculates the total length
- * @ac: argument count
- * @av: array of strings for program
- *
- * Return: total length
- */
-int get_total_length(int ac, char **av)
-{
-	int length = 0;
-	int i, j;
-
-	for (i = 0; i < ac; i++)
-	{
-		j = 0;
-		while (av[i][j] != '\0')
-		{
-			length++;
-			j++;
-		}
-	}
-
-	length += ac;
-
-	return (length);
-}
-
 /**
  * argstostr - concatenates all the arguments
  * to your program
@@ -40,32 +12,28 @@ int get_total_length(int ac, char **av)
  */
 char *argstostr(int ac, char **av)
 {
-	int index, length, i, j = 0;
-	char *concat;
+	int i, n, r = 0, l = 0;
+	char *str;
 
 	if (ac == 0 || av == NULL)
 		return (NULL);
-	length = get_total_length(ac, av);
+	for (i = 0; i < ac; i++)
+		for (n = 0; av[i][n]; n++)
+			l++;
+	l += ac;
+	str = malloc(sizeof(char) * l + 1);
 
-	concat = malloc(sizeof(char) * (length + 1));
-	if (concat == NULL)
+	if (str == NULL)
 		return (NULL);
-
-	index = 0;
-
 	for (i = 0; i < ac; i++)
 	{
-		while (av[i][j] != '\0')
+		for (n = 0; av[i][n]; n++)
 		{
-			concat[index] = av[i][j];
-			index++;
-			j++;
+			tr[r] = av[i][n];
+			r++;
 		}
-		concat[index] = '\n';
-		index++;
+		if (str[r] == '\0')
+			str[r++] = '\n';
 	}
-
-	concat[index] = '\0';
-
-	return (concat);
+	return (str);
 }
