@@ -40,7 +40,7 @@ int get_total_length(int ac, char **av)
  */
 char *argstostr(int ac, char **av)
 {
-	int length, i, j = 0;
+	int index, length, i, j = 0;
 	char *concat;
 
 	if (ac == 0 || av == NULL)
@@ -51,7 +51,7 @@ char *argstostr(int ac, char **av)
 	if (concat == NULL)
 		return (NULL);
 
-	int index = 0;
+	index = 0;
 
 	for (i = 0; i < ac; i++)
 	{
