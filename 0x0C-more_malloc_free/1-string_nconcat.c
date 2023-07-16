@@ -29,22 +29,26 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 		s2_len++;
 
 	/* Determine the actual number of bytes to copy from s2 */
-	if (n >= s2_len)
-		copy_len = s2_len;
-	else
-		copy_len = n;
+	if (n > s2_len)
+		n = s2_len;
+
+	copy_len = s1_len + n;
 
 	/* Allocate memory for the result string */
-	output = malloc((s1_len + copy_len + 1) * sizeof(char));
+	output = malloc(copy_len + 1);
+
 	if (output == NULL)
-		exit(EXIT_FAILURE);
+		return (NULL);
 
 	/* Copy s1 into the result */
 	for (i = 0; i < copy_len; i++)
-		output[s1_len + i] = s2[i];
+		if (i < s1_len)
+			output[i] = s1[i];
+		else
+			output[i] = s2[i - s1_len];
 
 	/* NULL-terminate the result */
-	output[s1_len + copy_len] = '\0';
+	output[i] = '\0';
 
 	return (output);
 }
