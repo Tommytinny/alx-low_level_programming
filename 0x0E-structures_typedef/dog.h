@@ -1,5 +1,14 @@
 #ifndef DOG_H
 #define DOG_H
+/**
+ * struct dog - define type for dog
+ * @name: first member for name
+ * @age: second member for age
+ * @owner: third member for the owner
+ *
+ * Description: Define new type for dog
+ * description
+ */
 
 struct dog
 {
@@ -8,4 +17,4 @@ struct dog
 	char *owner;
 };
 
-#endif 
+#endif
