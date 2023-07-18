@@ -23,7 +23,7 @@ int _strlen(char *s)
  * @src: copy from
  * Return: copied string
  */
-int *_strcpy(char *dest, char *src)
+char *_strcpy(char *dest, char *src)
 {
 	int len, i;
 
@@ -70,8 +70,8 @@ dog_t *new_dog(char *name, float age, char *owner)
 	dog->owner = malloc(sizeof(char) * (length2 + 1));
 	if (dog->owner == NULL)
 	{
-		free(dog);
 		free(dog->name);
+		free(dog);
 		return (NULL);
 	}
 
