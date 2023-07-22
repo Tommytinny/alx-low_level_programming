@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdarg.h>
 #include <stdlib.h>
-#include "variadic_functions.h"
+include "variadic_functions.h"
 
 /**
  * print_strings - prints strings
@@ -10,6 +10,7 @@
  *
  * Description: If separator is NULL, don’t print it
  *              If one of the string is NULL, print (nil) instead
+ * Return: nothing
  */
 void print_strings(const char *separator, const unsigned int n, ...)
 {
@@ -34,10 +35,4 @@ void print_strings(const char *separator, const unsigned int n, ...)
 	va_end(args);
 
 	printf("\n");
-}
-
-int main(void)
-{
-	print_strings(", ", 2, "Jay", "Django");
-	return (0);
 }
