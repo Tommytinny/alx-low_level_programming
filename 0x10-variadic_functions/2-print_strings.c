@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include <stdarg.h>
 #include <stdlib.h>
 #include "variadic_functions.h"
@@ -27,10 +28,16 @@ void print_strings(const char *separator, const unsigned int n, ...)
 			printf("%s", str);
 
 
-		if (i != (n - 1) && separator != NULL)
+		if (i < n - 1 && separator != NULL)
 			printf("%s", separator);
 	}
-	printf("\n");
-
 	va_end(args);
+
+	printf("\n");
+}
+
+int main(void)
+{
+	print_strings(", ", 2, "Jay", "Django");
+	return (0);
 }
