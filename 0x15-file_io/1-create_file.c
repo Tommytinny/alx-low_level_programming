@@ -1,5 +1,6 @@
 #include "main.h"
-/*
+
+/**
  * _strlen - length of string.
  * @s: string input.
  *
@@ -18,7 +19,7 @@ int _strlen(char *s)
 	return (sum);
 }
 
-/*
+/**
  * create_file - creates a file.
  * @filename: name of file to be created.
  * @text_content: text to written in the file.
