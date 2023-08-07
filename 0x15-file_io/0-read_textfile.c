@@ -17,14 +17,11 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	ssize_t byteRead;
 	ssize_t output;
 
-	buffer = malloc(letters + 1);
-	if (buffer == NULL)
-		return (0);
-
 	filesDes = open(filename, O_RDONLY);
 	if (filesDes == -1 || filename == NULL)
 		return (0);
 
+	buffer = malloc(sizeof(char) * letters);
 	byteRead = read(filesDes, buffer, letters);
 	output = write(STDOUT_FILENO, buffer, byteRead);
 	if (output == -1)
@@ -36,5 +33,5 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	close(filesDes);
 	free(buffer);
 
-	return (letters);
+	return (output);
 }
