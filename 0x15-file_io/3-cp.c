@@ -17,6 +17,27 @@ void close_fd(int fd)
 		exit(100);
 	}
 }
+
+/**
+ * error - check for error
+ * @fd_frm: file_from
+ * @fd_to: file_to
+ * @argv: arguments
+ * Return: no return
+ */
+void error(int fd_frm, int fd_to, char **argv)
+{
+	if (fd_frm == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Cant't read from file %s\n", argv[1]);
+		exit(98);
+	}
+	if (fd_to == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
+		exit(99);
+	}
+}
 /**
  * main - copies the content of a file to another file
  * @argc: arguments count
@@ -37,27 +58,26 @@ int main(int argc, char **argv)
 	}
 
 	fd_frm = open(argv[1], O_RDONLY);
-	byteRd = read(fd_frm, buffer, sizeof(buffer));
-	if (fd_frm == -1 || byteRd == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Cant't read from file %s\n", argv[1]);
-		exit(98);
-	}
-
 	fd_to = open(argv[2], O_WRONLY | O_TRUNC | O_CREAT | O_APPEND, 0664);
-	if (fd_to == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
-		exit(99);
-	}
+	error(fd_frm, fd_to, argv);
 
-	byteWr = write(fd_to, buffer, byteRd);
-	if (byteWr == -1)
+	byteRd = 1024;
+	while (byteRd == 1024)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
-		exit(99);
-	}
+		byteRd = read(fd_frm, buffer, sizeof(buffer));
+		if (byteRd == -1)
+		{
+			dprintf(STDERR_FILENO, "Error: Cant't read from file %s\n", argv[1]);
+			exit(98);
+		}
+		byteWr = write(fd_to, buffer, byteRd);
+		if (byteWr == -1)
+		{
+			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
+			exit(99);
+		}
 
+	}
 
 	close_fd(fd_frm);
 	close_fd(fd_to);
