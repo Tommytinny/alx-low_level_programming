@@ -43,7 +43,7 @@ void close_fd(int fd)
 int main(int ac, char **argv)
 {
 	int fd_frm, fd_to;
-	char buffer[BUFFER_SIZE];
+	char *buffer;
 	ssize_t byteRd, byteWr;
 
 	if (ac != 3)
@@ -53,10 +53,12 @@ int main(int ac, char **argv)
 	}
 
 	fd_frm = open(argv[1], O_RDONLY);
-	byteRd = read(fd_frm, buffer, BUFFER_SIZE);
+	buffer = malloc(sizeof(char) * 1024);
+	byteRd = read(fd_frm, buffer, 1024);
 	if (fd_frm == -1 || byteRd == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Cant't read from file %s\n", argv[1]);
+		free(buffer);
 		exit(98);
 	}
 
@@ -64,21 +66,20 @@ int main(int ac, char **argv)
 	if (fd_to == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
+		free(buffer);
+		exit(99);
+	}
+	
+	byteWr = write(fd_to, buffer, byteRd);
+	if (byteWr == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
+		free(buffer);
 		exit(99);
 	}
 
-	while (fd_to > 0)
-	{
-		byteWr = write(fd_to, buffer, byteRd);
-		if (byteWr == -1)
-		{
-			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
-			exit(99);
-		}
-		byteRd = read(fd_frm, buffer, BUFFER_SIZE);
-		fd_to = open(argv[2], O_WRONLY | O_APPEND);
-	}
 
+	free(buffer);
 	close_fd(fd_frm);
 	close_fd(fd_to);
 
