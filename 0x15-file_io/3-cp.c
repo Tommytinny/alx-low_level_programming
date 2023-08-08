@@ -1,24 +1,6 @@
 #include "main.h"
 
 void close_fd(int fd);
-/**
- * _strlen - length of a string
- * @s: string
- *
- * Return: string length
- */
-int _strlen(char *s)
-{
-	int i = 1, sum = 0;
-	char pl = s[0];
-
-	while (pl != '\0')
-	{
-		sum++;
-		pl = s[i++];
-	}
-	return (sum);
-}
 
 /**
  * close_fd - close file descriptor
@@ -36,17 +18,19 @@ void close_fd(int fd)
 	}
 }
 /**
- * main - check the code.
+ * main - copies the content of a file to another file
+ * @argc: arguments count
+ * @argv: arguments
  *
  * Return: Always 0.
  */
-int main(int ac, char **argv)
+int main(int argc, char **argv)
 {
 	int fd_frm, fd_to;
 	char *buffer;
 	ssize_t byteRd, byteWr;
 
-	if (ac != 3)
+	if (argc != 3)
 	{
 		dprintf(2, "Usage: cp file_from file_to\n");
 		exit(97);
@@ -66,10 +50,9 @@ int main(int ac, char **argv)
 	if (fd_to == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
-		free(buffer);
 		exit(99);
 	}
-	
+
 	byteWr = write(fd_to, buffer, byteRd);
 	if (byteWr == -1)
 	{
