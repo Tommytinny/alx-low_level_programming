@@ -29,7 +29,7 @@ void close_fd(int fd)
 	int fd_v;
 
 	fd_v = close(fd);
-	if (fd_V == -1)
+	if (fd_v == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd);
 		exit(100);
@@ -43,7 +43,7 @@ void close_fd(int fd)
 int main(int ac, char **argv)
 {
 	int fd, fld;
-	char buffer[1024];
+	char *buffer;
 	const char *file_fr = argv[1];
 	const char *file_to = argv[2];
 	ssize_t byteFd, byteFld;
@@ -51,27 +51,31 @@ int main(int ac, char **argv)
 	if (ac != 3)
 	{
 		dprintf(2, "Usage: cp file_from file_to\n");
-		free(buffer);
 		exit(97);
 	}
 
 	fd = open(file_fr, O_RDONLY);
+	buffer = malloc(sizeof(char) * 1024);
 	byteFd = read(fd, buffer, sizeof(buffer));
 	if (fd == -1 || byteFd == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Cant't read from file %s\n", file_fr);
-		free(buffer);
 		exit(98);
 	}
 
-	fld = open(file_to, O_WRONLY | O_TRUNC | O_CREAT, 0664);
-	byteFld = write(fld, text, _strlen(text));
+	fld = open(file_to, O_CREAT | O_WRONLY | O_TRUNC, 0664);
+	byteFld = write(fld, buffer, byteFd);
 	if (fld == -1 || byteFld == -1)
 	{
-
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file_to);
+		free(buffer);
 		exit(99);
 	}
+	fld = open(file_to, O_WRONLY | O_APPEND);
+
 	free(buffer);
 	close_fd(fd);
 	close_fd(fld);
+
+	return (0);
 }
