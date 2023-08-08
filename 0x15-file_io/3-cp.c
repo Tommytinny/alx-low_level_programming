@@ -66,17 +66,10 @@ int main(int argc, char **argv)
 	{
 		byteRd = read(fd_frm, buffer, 1024);
 		if (byteRd == -1)
-		{
-			dprintf(STDERR_FILENO, "Error: Cant't read from file %s\n", argv[1]);
-			exit(98);
-		}
+			error(-1, 0, argv);
 		byteWr = write(fd_to, buffer, byteRd);
 		if (byteWr == -1)
-		{
-			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
-			exit(99);
-		}
-
+			error(0, -1, argv);
 	}
 
 	close_fd(fd_frm);
