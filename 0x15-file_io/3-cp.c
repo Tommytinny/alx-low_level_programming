@@ -35,6 +35,7 @@ void error(int fd_frm, int fd_to, char **argv)
 	if (fd_to == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
+		close(fd_frm);
 		exit(99);
 	}
 }
