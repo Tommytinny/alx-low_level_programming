@@ -1,5 +1,25 @@
 #include "main.h"
 
+void close_fd(int fd);
+/**
+ * _strlen - length of a string
+ * @s: string
+ *
+ * Return: string length
+ */
+int _strlen(char *s)
+{
+	int i = 1, sum = 0;
+	char pl = s[0];
+
+	while (pl != '\0')
+	{
+		sum++;
+		pl = s[i++];
+	}
+	return (sum);
+}
+
 /**
  * close_fd - close file descriptor
  * @fd: file descriptor
@@ -48,11 +68,10 @@ int main(int ac, char **argv)
 	byteFld = write(fld, text, _strlen(text));
 	if (fld == -1 || byteFld == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file_to);
-		free(buffer);
+
 		exit(99);
 	}
 	free(buffer);
-	close(fd);
-	close(fld);
+	close_fd(fd);
+	close_fd(fld);
 }
