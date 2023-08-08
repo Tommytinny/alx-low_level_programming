@@ -64,7 +64,7 @@ int main(int argc, char **argv)
 	byteRd = 1024;
 	while (byteRd == 1024)
 	{
-		byteRd = read(fd_frm, buffer, sizeof(buffer));
+		byteRd = read(fd_frm, buffer, 1024);
 		if (byteRd == -1)
 		{
 			dprintf(STDERR_FILENO, "Error: Cant't read from file %s\n", argv[1]);
