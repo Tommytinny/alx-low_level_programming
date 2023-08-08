@@ -27,7 +27,7 @@ void close_fd(int fd)
 int main(int argc, char **argv)
 {
 	int fd_frm, fd_to;
-	char *buffer;
+	char buffer[1024];
 	ssize_t byteRd, byteWr;
 
 	if (argc != 3)
@@ -37,16 +37,14 @@ int main(int argc, char **argv)
 	}
 
 	fd_frm = open(argv[1], O_RDONLY);
-	buffer = malloc(sizeof(char) * 1024);
-	byteRd = read(fd_frm, buffer, 1024);
+	byteRd = read(fd_frm, buffer, sizeof(buffer));
 	if (fd_frm == -1 || byteRd == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Cant't read from file %s\n", argv[1]);
-		free(buffer);
 		exit(98);
 	}
 
-	fd_to = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
+	fd_to = open(argv[2], O_WRONLY | O_TRUNC | O_CREAT, 0666);
 	if (fd_to == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
@@ -57,12 +55,10 @@ int main(int argc, char **argv)
 	if (byteWr == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
-		free(buffer);
 		exit(99);
 	}
 
 
-	free(buffer);
 	close_fd(fd_frm);
 	close_fd(fd_to);
 
