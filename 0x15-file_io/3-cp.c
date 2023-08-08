@@ -58,7 +58,8 @@ int main(int argc, char **argv)
 	}
 
 	fd_frm = open(argv[1], O_RDONLY);
-	fd_to = open(argv[2], O_WRONLY | O_TRUNC | O_CREAT | O_APPEND, 0664);
+	fd_to = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR
+			| S_IRGRP | S_IWGRP | S_IROTH);
 	error(fd_frm, fd_to, argv);
 
 	byteRd = 1024;
@@ -68,7 +69,7 @@ int main(int argc, char **argv)
 		if (byteRd == -1)
 			error(-1, 0, argv);
 		byteWr = write(fd_to, buffer, byteRd);
-		if (byteWr == -1)
+		if (byteWr < byteRd)
 			error(0, -1, argv);
 	}
 
