@@ -24,12 +24,14 @@ int main(int ac, char **argv)
 {
 	int fd, fld;
 	char buffer[1024];
-	char file_fr = argv[1], file_to = argv[2];
+	const char *file_fr = argv[1];
+	const char *file_to = argv[2];
 	ssize_t byteFd, byteFld;
 
 	if (ac != 3)
 	{
 		dprintf(2, "Usage: cp file_from file_to\n");
+		free(buffer);
 		exit(97);
 	}
 
@@ -38,6 +40,7 @@ int main(int ac, char **argv)
 	if (fd == -1 || byteFd == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Cant't read from file %s\n", file_fr);
+		free(buffer);
 		exit(98);
 	}
 
@@ -46,6 +49,7 @@ int main(int ac, char **argv)
 	if (fld == -1 || byteFld == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file_to);
+		free(buffer);
 		exit(99);
 	}
 	free(buffer);
