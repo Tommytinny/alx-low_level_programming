@@ -29,7 +29,7 @@ void error(int fd_frm, int fd_to, char **argv)
 {
 	if (fd_frm == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Cant't read from file %s\n", argv[1]);
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
 		exit(98);
 	}
 	if (fd_to == -1)
