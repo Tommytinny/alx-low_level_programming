@@ -12,15 +12,13 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
 	int index;
 	hash_node_t *new = malloc(sizeof(hash_node_t));
-	
-	if (new == NULL || key == NULL)
+
+	if (new == NULL || key == NULL || value == NULL)
 		return (0);
 
-	index = key_index((unsigned char*)key, ht->size);
-	new->key = malloc(strlen(key) + 1);
-	new->value = malloc(strlen(key) + 1);
-	strcpy(new->key, key);
-	strcpy(new->value, value);
+	index = key_index((unsigned char *)key, ht->size);
+	new->key = strdup(key);
+	new->value = strdup(value);
 	new->next = NULL;
 
 	if (ht->array[index] != NULL)
