@@ -1,5 +1,5 @@
-#ifndef SEARCH_ALGORITHM_H
-#define SEARCH_ALGORITHM_H
+#ifndef SEARCH_ALGOs_H
+#define SEARCH_ALGOs_H
 
 #include <math.h>
 #include <stdio.h>
